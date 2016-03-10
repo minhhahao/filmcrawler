@@ -1,0 +1,41 @@
+{
+  "base_url": "http://tinhochay.net",
+  "start_urls": [
+    "http://tinhochay.net/category/cach-vao-facebok/",
+    "http://tinhochay.net/category/giai-tri-facebook/",
+    "http://tinhochay.net/category/thu-thuat-facebook/",
+    "http://tinhochay.net/category/tips-may-tinh/",
+    "http://tinhochay.net/category/windows-8/",
+    "http://tinhochay.net/category/windows-7/",
+    "http://tinhochay.net/category/chatinternet/",
+    "http://tinhochay.net/category/windows-10/"
+  ],
+  "rules": [
+    "Rule(lxml(allow=('.*'), restrict_xpaths=(\"//h2[@class='post-box-title']/a\")), callback='parse_product')",
+    "Rule(lxml(allow=('.*'), restrict_xpaths=(\"//div[@class='pagination']//a\")), follow=True)"
+  ],
+  "fields": {
+    "product_name": "tinhochay",
+    "title": {
+      "xpath": "//h1[@class='name post-title entry-title']/span//text()"
+    },
+    "description": {
+      "xpath": "//article[@id='the-post']/div[@class='post-inner']/div[@class='entry']/p[not(contains(./script/@type, 'text/javascript'))]"
+    },
+    "description_urls": {
+      "xpath": "//article[@id='the-post']/div[@class='post-inner']/div[@class='entry']/p[not(contains(./script/@type, 'text/javascript'))]//a/@href"
+    },
+    "post_date": {
+      "xpath": "//meta[@property='article:published_time']/@content"
+    },
+    "image_urls": {
+      "xpath": "//article[@id='the-post']/div[@class='post-inner']/div[@class='entry']//img/@src"
+    },
+    "categories": {
+      "xpath": "//div[@id='crumbs']/span/a//text()"
+    },
+    "tags": {
+      "xpath": "//p[@class='post-tag']/a//text()"
+    }
+  }
+}

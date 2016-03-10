@@ -1,0 +1,34 @@
+{
+  "base_url": "http://baoboi.org",
+  "start_urls": [
+    "http://baoboi.org/thu-thuat-tin-hoc/"
+  ],
+  "rules": [
+    "Rule(lxml(allow=('.*',), restrict_xpaths=(\"//div[@class='page-nav td-pb-padding-side']/a\")), follow=True)",
+    "Rule(lxml(allow=('.*',), restrict_xpaths=(\"//div[@class='td_module_10 td_module_wrap td-animation-stack']//h3[@class='entry-title td-module-title']/a\")), callback='parse_product')"
+  ],
+  "fields": {
+    "product_name": "baoboi",
+    "title": {
+      "xpath": "//h1[@class='entry-title']//text()"
+    },
+    "description": {
+      "xpath": "//div[@class='td-post-content']/div[1]/following-sibling::*[not(./script) and not(.//@async)]"
+    },
+    "description_urls": {
+      "xpath": "//div[@class='td-post-content']/div[1]/following-sibling::*[not(./script) and not(.//@async)]//a/@href"
+    },
+    "post_date": {
+      "xpath": "//header[@class='td-post-title']//time[@class='entry-date updated td-module-date']//text()"
+    },
+    "image_urls": {
+      "xpath": "//div[@class='td-post-content']//img/@src"
+    },
+    "categories": {
+      "xpath": "//div[@class='entry-crumbs']/span[position()>1]/a[@class='entry-crumb']/span//text()"
+    },
+    "tags": {
+      "xpath": "//ul[@class='td-tags td-post-small-box clearfix']/li/a//text()"
+    }
+  }
+}

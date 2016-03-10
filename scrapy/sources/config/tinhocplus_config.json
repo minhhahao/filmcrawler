@@ -1,0 +1,41 @@
+{
+  "base_url": "http://tinhocplus.com",
+  "start_urls": [
+    "http://tinhocplus.com/category/thu-thuat"
+  ],
+  "rules": [
+    "Rule(lxml(allow=('.*',), restrict_xpaths=(\"//div[@class='pagination']//a\")), follow=True)",
+    "Rule(lxml(allow=('.*',), restrict_xpaths=(\"//h2[@class='title post-title']/a\")), callback='parse_product')"
+  ],
+  "fields": {
+    "product_name": "tinhocplus",
+    "title": {
+      "xpath": "//h1[@class='title single-title entry-title']//text()"
+    },
+    "description": {
+      "xpath": [
+        "//div[@class='post-single-content box mark-links entry-content']/p[1]",
+        "//div[@class='post-single-content box mark-links entry-content']/div[@class='rpbt_shortcode']/following-sibling::*[not(self::div[@class='bottomad'])][not(self::div[@class='dmca-badge'])]"
+      ]
+    },
+    "description_urls": {
+      "xpath": [
+        "//div[@class='post-single-content box mark-links entry-content']/p[1]//a/@href",
+        "//div[@class='post-single-content box mark-links entry-content']/div[@class='rpbt_shortcode']/following-sibling::*[not(self::div[@class='bottomad'])][not(self::div[@class='dmca-badge'])]//a/@href"
+      ]
+    },
+    "post_date": {
+      "xpath": "//div[@class='single_post']/header/div[@class='post-info']/span[@class='thetime updated']//text()"
+    },
+    "image_urls": {
+      "xpath": "//div[@class='post-single-content box mark-links entry-content']//img/@src",
+      "re": "http.*"
+    },
+    "categories": {
+      "xpath": "//div[@class='single_post']/div[@class='breadcrumb']/div[position()>2]/a//text()"
+    },
+    "tags": {
+      "xpath": "//div[@class='single_post']/header/div[@class='post-info']/span[@class='thetags']/a//text()"
+    }
+  }
+}

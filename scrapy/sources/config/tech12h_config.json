@@ -1,0 +1,38 @@
+{
+  "base_url": "http://www.tech12h.com",
+  "start_urls": [
+    "http://www.tech12h.com/node/"
+  ],
+  "rules": [
+    "Rule(lxml(allow=('.*'), restrict_xpaths=(\"//div[@class='content']/div[@id]/h2/a\")), callback='parse_product')",
+    "Rule(lxml(allow=('.*'), restrict_xpaths=(\"//ul[@class='pager']/li[@class='pager-item']//a\")), follow=True)"
+  ],
+  "fields": {
+    "product_name": "tech12h",
+    "title": {
+      "xpath": "//h1[@class='node_ct']//text()"
+    },
+    "description": {
+      "xpath": [
+        "//div[@class='views-row views-row-1 views-row-odd views-row-first views-row-last']/div[@class='views-field views-field-field-mota-1']",
+        "//div[@class='views-row views-row-1 views-row-odd views-row-first views-row-last']/div[@class='views-field views-field-body']"
+      ]
+    },
+    "description_urls": {
+      "xpath": [
+        "//div[@class='views-row views-row-1 views-row-odd views-row-first views-row-last']/div[@class='views-field views-field-field-mota-1']//a/@href",
+        "//div[@class='views-row views-row-1 views-row-odd views-row-first views-row-last']/div[@class='views-field views-field-body']//a/@href"
+      ]
+    },
+    "post_date": {
+      "xpath": "//div[@class='author']/span[2]//text()",
+      "re": "[0-9].*"
+    },
+    "image_urls": {
+      "xpath": "//div[@class='view-content']/div[@class='views-row views-row-1 views-row-odd views-row-first views-row-last']/div[@class='views-field views-field-body']/div[@class='field-content']//img/@src"
+    },
+    "categories": {
+      "xpath": "//div[@class='panel-pane pane-block pane-my-path-content']/div[@class='pane-content']/a[position()>1]//text()"
+    }
+  }
+}

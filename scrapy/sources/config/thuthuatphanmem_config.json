@@ -1,0 +1,31 @@
+{
+  "base_url": "http://thuthuatphanmem.vn/",
+  "start_urls": [
+    "http://thuthuatphanmem.vn/"
+  ],
+  "rules": [
+    "Rule(lxml(allow=('.*'), restrict_xpaths=(\"//h2[@class='title']/a\")), callback='parse_product')",
+    "Rule(lxml(allow=('.*'), restrict_xpaths=(\"//ul[@class='pagination']/li/a\")), follow=True)"
+  ],
+  "fields": {
+    "product_name": "thuthuatphanmem",
+    "title": {
+      "xpath": "//h1//text()"
+    },
+    "description": {
+      "xpath": "//div[@class='content']"
+    },
+    "description_urls": {
+      "xpath": "//div[@class='content']//a/@href"
+    },
+    "post_date": {
+      "xpath": "substring-after(//span[@class='post-meta']/text()[2], ', ')"
+    },
+    "image_urls": {
+      "xpath": "//div[@class='content']//img/@src"
+    },
+    "categories": {
+      "xpath": "//div[@class='main-breadcrumb']/div[position()>1]//a//text()"
+    }
+  }
+}

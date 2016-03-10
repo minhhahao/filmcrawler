@@ -1,0 +1,34 @@
+{
+  "base_url": "http://tinhoc24h.net",
+  "start_urls": [
+    "http://tinhoc24h.net/thu-thuat/"
+  ],
+  "rules": [
+    "Rule(lxml(allow=('.*',), restrict_xpaths=(\"//div[@id='count-page']/a\")), follow=True)",
+    "Rule(lxml(allow=('.*',), restrict_xpaths=(\"//h2[@class='post-title']/a\")), callback='parse_product')"
+  ],
+  "fields": {
+    "product_name": "tinhoc24h",
+    "title": {
+      "xpath": "//h1[@class='post-title']/a//text()"
+    },
+    "description": {
+      "xpath": "//div[@class='content']/*[not(@style)][not(div)]"
+    },
+    "description_urls": {
+      "xpath": "//div[@class='content']/*[not(@style)][not(div)]//a/@href"
+    },
+    "post_date": {
+      "xpath": "//div[@class='post']/p[@class='post-info']/span[@class='time']//text()"
+    },
+    "image_urls": {
+      "xpath": "//div[@class='content']//img/@src"
+    },
+    "categories": {
+      "xpath": "//div[@class='breadcrumbs']//a[@class='taxonomy category']//text()"
+    },
+    "tags": {
+      "xpath": "//div[@class='postmeta']/p/span[@class='tags']/a//text()"
+    }
+  }
+}

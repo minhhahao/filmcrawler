@@ -1,0 +1,31 @@
+{
+  "base_url": "http://topthuthuat.com",
+  "start_urls": [
+    "http://topthuthuat.com/"
+  ],
+  "rules": [
+    "Rule(lxml(allow=('.*',), restrict_xpaths=(\"//div[@class='pagination-bg']/a\")), follow=True)",
+    "Rule(lxml(allow=('.*',), restrict_xpaths=(\"//h1[@class='pos-title']/a\")), callback='parse_product')"
+  ],
+  "fields": {
+    "product_name": "topthuthuat",
+    "title": {
+      "xpath": "//h1//text()"
+    },
+    "description": {
+      "xpath": "//div[@class='floatbox']/div[@class='pos-content']/div[contains(@class, 'element-textarea')]"
+    },
+    "description_urls": {
+      "xpath": "//div[@class='floatbox']/div[@class='pos-content']/div[contains(@class, 'element-textarea')]//a/@href"
+    },
+    "post_date": {
+      "xpath": "substring-after(normalize-space(substring-before(//p[@class='pos-meta'], '.')),' ')"
+    },
+    "image_urls": {
+      "xpath": "//div[@class='pos-content']/div[@class='element element-textarea first last']/p/img/@src"
+    },
+    "categories": {
+      "xpath": "//ul[@class='uk-breadcrumb']/li[position()>1]//text()"
+    }
+  }
+}

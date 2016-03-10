@@ -1,0 +1,7 @@
+€}q(Ucrawler.utils.moduleimport]Ucrawler.utils.formatdata]qUdescriptionqaUcrawler.items]qUCrawlerItemqaUcrawler.spiders.balloon]qU	WebSpiderqaUcrawler.spiders.backup]qUGlobalSpiderq	aUcrawler.settings]q
+(UNEWSPIDER_MODULEqUITEM_PIPELINESqUCONCURRENT_REQUESTS_PER_DOMAINqUCONCURRENT_REQUESTSqUSPIDER_MODULESqUDEFAULT_REQUEST_HEADERSqUBOT_NAMEqU
+USER_AGENTqUDOWNLOADER_MIDDLEWARESqUDOWNLOAD_DELAYqeUcrawler.utils]Ucrawler.spiders]Ucrawler.middleware]q(UEncodeUtf8ResponseqURandomUserAgentMiddlewareqeUcrawler.utils.basefunctions]q(Ufloat_to_stringqUnormalize_unicodeqU
+sub_stringqUmap_to_dictqU
+clean_htmlqUnormalize_spaceqUmake_requestqUclean_selector_nullq Uequal_ignore_caseq!Ucontainsq"Uget_attrq#Uxpathq$Uheadq%U
+difficultyq&Uremove_noneq'Uurl_join_listq(Uobject_to_jsonq)Uis_item_noneq*Ulanguageq+Uxpath_orq,Uget_link_youtubeq-Uextract_dataq.Udetect_languageq/U
+append_dicq0U	SizedDictq1eUcrawler]q2Uutilsq3aUcrawler.pipelines]q4UCrawlerPipelineq5aUcrawler.use_proxy]q6URandomProxyq7au.

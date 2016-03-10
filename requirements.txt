@@ -1,0 +1,2 @@
+lxml
+scrapy==0.24.6

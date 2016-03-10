@@ -1,0 +1,34 @@
+{
+  "base_url": "http://khothuthuat.com",
+  "start_urls": [
+    "http://khothuthuat.com/thu-thuat-may-tinh/"
+  ],
+  "rules": [
+    "Rule(lxml(allow=('.*'), restrict_xpaths=(\"//div[@class='column half']/article//h2/a\")), callback='parse_product')",
+    "Rule(lxml(allow=('.*'), restrict_xpaths=(\"//div[@class='main-pagination']/a\")), follow=True)"
+  ],
+  "fields": {
+    "product_name": "khothuthuat",
+    "title": {
+      "xpath": "//h1[@class='post-title item fn']//text()"
+    },
+    "description": {
+      "xpath": "//div[@itemprop='articleBody']/*[not(contains(./@class, 'tagcloud'))][not(contains(./@class, 'ads'))][not(self::strong)]"
+    },
+    "description_urls": {
+      "xpath": "//div[@itemprop='articleBody']/*[not(contains(./@class, 'tagcloud'))][not(contains(./@class, 'ads'))][not(self::strong)]//a/@href"
+    },
+    "post_date": {
+      "xpath": "//span[@class='posted-on']/span[@class='dtreviewed']/time[@class='value-title']//text()"
+    },
+    "image_urls": {
+      "xpath": "//div[@class='post-content description ']//img/@src"
+    },
+    "categories": {
+      "xpath": "//div[@class='breadcrumbs']/span[position()>2]/a/span//text()"
+    },
+    "tags": {
+      "xpath": "//div[@class='post-content description ']/div[@class='tagcloud']/a//text()"
+    }
+  }
+}

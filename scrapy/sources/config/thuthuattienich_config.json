@@ -1,0 +1,35 @@
+{
+  "base_url": "http://thuthuattienich.com",
+  "start_urls": [
+    "http://thuthuattienich.com/thu-thuat-may-tinh/",
+    "http://thuthuattienich.com/office/"
+  ],
+  "rules": [
+    "Rule(lxml(allow=('.*',), restrict_xpaths=(\"//div[@class='pagination']/a\")), follow=True)",
+    "Rule(lxml(allow=('.*',), restrict_xpaths=(\"//h2[@class='post-box-title']/a\")), callback='parse_product')"
+  ],
+  "fields": {
+    "product_name": "thuthuattienich",
+    "title": {
+      "xpath": "///h1[@class='name post-title entry-title']/span//text()"
+    },
+    "description": {
+      "xpath": "//div[@class='post-inner']/div[@class='entry']/div[2]/following-sibling::*//span"
+    },
+    "description_urls": {
+      "xpath": "//div[@class='post-inner']/div[@class='entry']/div[2]/following-sibling::*//span//a/@href"
+    },
+    "post_date": {
+      "xpath": "//article[@id='the-post']/div[@class='post-inner']/p[@class='post-meta']/span[@class='tie-date']//text()"
+    },
+    "image_urls": {
+      "xpath": "//div[@class='post-inner']/div[@class='entry']//img/@src"
+    },
+    "categories": {
+      "xpath": "//div[@id='crumbs']//span[position()>2]/a//text()"
+    },
+    "tags": {
+      "xpath": "//div[@class='content']/p[@class='post-tag']/a//text()"
+    }
+  }
+}
